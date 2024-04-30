@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<stlib.h>
+#include<time.h>
+
+char RL(){
+  return rand() %4<2 ? 'a' + rand() %26 : 'A' + rand() %26;
+}
+int main(){
+  srand(time(NULL));
+  printf("%c", RL());
+  return 0;
+}
