@@ -1,0 +1,15 @@
+#include<unistd.h>
+#include<stdio.h>
+#include<signal.h>
+
+void timer_handler (int signum) {
+  static int counter = 1;
+  printf("%d\n", counter++);
+  alarm(1);
+}
+int main() {
+  signal(SIGALRM, timer_handler);
+  alarm(1);
+  while(sleep(2));
+  return 0;
+}
