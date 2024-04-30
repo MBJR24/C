@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <time.h>
+volatile sig_atomic_t i_flag = 0;
+void i_handler(int signum) {
+	i_flag= 1;
+}
+int main() {
+	signal(SIGINT, i_handler);
+	while (!i_flag);
+	time_t t = time(NULL);
+	printf("Current time: %s", ctime(&t));
+}
